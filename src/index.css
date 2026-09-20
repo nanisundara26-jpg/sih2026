@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background-color: #F8FAFC;
+  color: #0F172A;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+}
+
+/* Light Card System with WCAG High Contrast */
+.clean-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -2px rgba(15, 23, 42, 0.02);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clean-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 16px 32px -6px rgba(37, 99, 235, 0.12);
+}
+
+/* Vibrant Colorful Border */
+.gradient-border-light {
+  position: relative;
+  border-radius: 1.5rem;
+  background: linear-gradient(120deg, #2563EB, #7C3AED, #DB2777, #06B6D4, #10B981, #2563EB);
+  background-size: 300% 300%;
+  animation: borderMovement 8s ease infinite;
+  padding: 2px;
+}
+
+@keyframes borderMovement {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+/* Title Gradient on SIH-2026 */
+.gradient-title-sih {
+  background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Animated Divider Line */
+.animated-gradient-line {
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent, #2563EB, #7C3AED, #06B6D4, transparent);
+  background-size: 200% 100%;
+  animation: lineShimmer 5s ease-in-out infinite;
+}
+
+@keyframes lineShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Search Focus Glow */
+.search-input-focus:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2), 0 0 24px -2px rgba(37, 99, 235, 0.25);
+  border-color: #2563EB;
+}
+
+/* QR Card Soft Glow Pulse */
+.qr-glow-pulse {
+  animation: qrGlow 3.5s ease-in-out infinite;
+}
+
+@keyframes qrGlow {
+  0%, 100% { box-shadow: 0 12px 35px -5px rgba(6, 182, 212, 0.25); }
+  50% { box-shadow: 0 18px 45px -2px rgba(124, 58, 237, 0.35); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Specific Rules */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  #printable-record {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    border: none !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  #printable-record * {
+    color: #0F172A !important;
+    box-shadow: none !important;
+  }
+
+  @page {
+    margin: 18mm 20mm;
+    size: A4 portrait;
+  }
+}
